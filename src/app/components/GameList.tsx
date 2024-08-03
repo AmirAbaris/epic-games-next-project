@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const GameList = () => {
     const [games, setGames] = useState([]);
@@ -18,35 +19,41 @@ const GameList = () => {
     }, []);
 
     return (
-        <>
-            <Swiper
-                spaceBetween={20} // Space between slides in pixels
-                slidesPerView={1} // Number of slides visible at a time
-                breakpoints={{
-                    640: {
-                        slidesPerView: 2, // 2 slides visible on small screens
-                    },
-                    768: {
-                        slidesPerView: 3, // 3 slides visible on medium screens
-                    },
-                    1024: {
-                        slidesPerView: 4, // 4 slides visible on large screens
-                    },
-                }}
-                pagination={{ clickable: true }} // Optional pagination
-            >
-                {games.map((game: GameItemProps, index: number) => (
-                    <SwiperSlide key={index}>
-                        <GameItem
-                            type={game.type}
-                            title={game.title}
-                            price={game.price}
-                            image={game.image}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </>
+        <Swiper
+            spaceBetween={20}
+            slidesPerView={5}
+            breakpoints={{
+                0: {
+                    slidesPerView: 1,
+                },
+                320: {
+                    slidesPerView: 2,
+                },
+                640: {
+                    slidesPerView: 3,
+                },
+                768: {
+                    slidesPerView: 4,
+                },
+                1024: {
+                    slidesPerView: 5,
+                }
+
+            }}
+            pagination={{ clickable: true }}
+            navigation
+        >
+            {games.map((game: GameItemProps, index: number) => (
+                <SwiperSlide key={index}>
+                    <GameItem
+                        type={game.type}
+                        title={game.title}
+                        price={game.price}
+                        image={game.image}
+                    />
+                </SwiperSlide>
+            ))}
+        </Swiper>
     );
 }
 
