@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Navigation } from 'swiper/modules';
 
 const GameList = () => {
     const [games, setGames] = useState([]);
@@ -19,41 +20,50 @@ const GameList = () => {
     }, []);
 
     return (
-        <Swiper
-            spaceBetween={20}
-            slidesPerView={5}
-            breakpoints={{
-                0: {
-                    slidesPerView: 1,
-                },
-                320: {
-                    slidesPerView: 2,
-                },
-                640: {
-                    slidesPerView: 3,
-                },
-                768: {
-                    slidesPerView: 4,
-                },
-                1024: {
-                    slidesPerView: 5,
-                }
+        <>
+            <div className="swiper-button-prev">previous</div>
+            <div className="swiper-button-next bg-red-700">next</div>
+            <Swiper
+                spaceBetween={20}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    320: {
+                        slidesPerView: 2,
+                    },
+                    640: {
+                        slidesPerView: 3,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                    }
 
-            }}
-            pagination={{ clickable: true }}
-            navigation
-        >
-            {games.map((game: GameItemProps, index: number) => (
-                <SwiperSlide key={index}>
-                    <GameItem
-                        type={game.type}
-                        title={game.title}
-                        price={game.price}
-                        image={game.image}
-                    />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+                }}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }}
+                modules={[Navigation]}
+            >
+                {games.map((game: GameItemProps, index: number) => (
+                    <SwiperSlide key={index}>
+                        <GameItem
+                            type={game.type}
+                            title={game.title}
+                            price={game.price}
+                            image={game.image}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </>
     );
 }
 
