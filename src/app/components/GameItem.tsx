@@ -16,15 +16,15 @@ type GameType =
 
 const GameItem = ({ type, title, price, image }: GameItemProps) => {
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center h-full'>
             <Image src={image} alt={title} priority
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="rounded mb-4 w-full h-auto" />
-            <div className='flex flex-col w-full flex-1'>
+                className="rounded mb-4 w-full object-cover" />
+            <div className='flex flex-col w-full flex-1 bg-red-600'>
                 <span className='text-xs text-gray-400'>{type}</span>
-                <h1 className='font-bold text-base'>{title}</h1>
+                <h1 className='font-bold text-base flex-1'>{title}</h1>
                 <p className='mt-4'>{price}</p>
             </div>
         </div>

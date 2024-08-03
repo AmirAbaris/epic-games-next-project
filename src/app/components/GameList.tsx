@@ -23,7 +23,7 @@ const GameList = () => {
         <>
             <div className="swiper-button-prev">previous</div>
             <div className="swiper-button-next bg-red-700">next</div>
-            <Swiper
+            <Swiper className='h-auto'
                 spaceBetween={20}
                 slidesPerView={5}
                 slidesPerGroup={5}
@@ -53,7 +53,7 @@ const GameList = () => {
                 modules={[Navigation]}
             >
                 {games.map((game: GameItemProps, index: number) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide className='h-auto' key={index}>
                         <GameItem
                             type={game.type}
                             title={game.title}

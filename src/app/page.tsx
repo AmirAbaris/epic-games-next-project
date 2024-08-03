@@ -3,7 +3,7 @@ import GameList from "./components/GameList";
 
 export default function Home() {
   return (
-    <main>
+    <main className="container mx-auto">
       <>
         <GameList />
       </>
