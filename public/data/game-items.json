@@ -1,0 +1,38 @@
+[
+    {
+        "type": "Base Game",
+        "title": "World of Goo 2",
+        "price": "£23.79",
+        "image": "/game-list-covers/gi1.jpeg"
+    },
+    {
+        "type": "Base Game",
+        "title": "Horizon Forbidden West™ Complete Edition",
+        "price": "£49.99",
+        "image": "/game-list-covers/gi2.jpeg"
+    },
+    {
+        "type": "Base Game",
+        "title": "Crosshair X",
+        "price": "£6.39",
+        "image": "/game-list-covers/gi3.png"
+    },
+    {
+        "type": "Base Game",
+        "title": "Ghost of Tsushima DIRECTOR'S CUT",
+        "price": "£49.99",
+        "image": "/game-list-covers/gi4.jpeg"
+    },
+    {
+        "type": "Base Game",
+        "title": "Suicide Squad: Kill the Justice League",
+        "price": "£59.99",
+        "image": "/game-list-covers/gi5.jpeg"
+    },
+    {
+        "type": "Base Game",
+        "title": "F1® Manager 2024",
+        "price": "£29.99",
+        "image": "/game-list-covers/gi6.jpg"
+    }
+]

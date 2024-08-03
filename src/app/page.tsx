@@ -1,9 +1,12 @@
 import Image from "next/image";
+import GameList from "./components/GameList";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1>Hi Epic Games</h1>
+      <>
+        <GameList />
+      </>
     </main>
   );
 }
