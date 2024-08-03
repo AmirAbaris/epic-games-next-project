@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { IoChevronForwardOutline } from "react-icons/io5";
 import 'swiper/css';
 import { Navigation } from 'swiper/modules';
 
@@ -21,8 +22,16 @@ const GameList = () => {
 
     return (
         <>
-            <div className="swiper-button-prev">previous</div>
-            <div className="swiper-button-next bg-red-700">next</div>
+            <div className='flex items-center justify-end gap-x-4 mb-4'>
+                <button className='swiper-button-prev bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
+                    <IoChevronForwardOutline className='rotate-180' />
+                </button>
+
+                <button className='swiper-button-next bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
+                    <IoChevronForwardOutline />
+                </button>
+            </div>
+
             <Swiper className='h-auto'
                 spaceBetween={20}
                 slidesPerView={5}
