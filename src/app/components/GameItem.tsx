@@ -22,7 +22,7 @@ const GameItem = ({ type, title, price, image }: GameItemProps) => {
                 height={0}
                 sizes="100vw"
                 className="rounded mb-4 w-full object-cover" />
-            <div className='flex flex-col w-full flex-1 bg-red-600'>
+            <div className='flex flex-col w-full flex-1'>
                 <span className='text-xs text-gray-400'>{type}</span>
                 <h1 className='font-bold text-base flex-1'>{title}</h1>
                 <p className='mt-4'>{price}</p>
