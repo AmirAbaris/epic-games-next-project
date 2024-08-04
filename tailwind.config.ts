@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         darkCharcoal: "#343437",
+        gunmetalGray: '#58585b'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

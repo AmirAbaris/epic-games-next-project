@@ -25,7 +25,7 @@ const GameItem = ({ type, title, price, image }: GameItemProps) => {
             <div className='flex flex-col w-full flex-1'>
                 <span className='text-xs text-gray-400'>{type}</span>
                 <h1 className='font-bold text-base flex-1'>{title}</h1>
-                <p className='mt-1'>{price}</p>
+                <p className='mt-1 text-xs font-light'>{price}</p>
             </div>
         </div>
     );

@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoChevronForwardOutline } from "react-icons/io5";
-import { Navigation, Scrollbar } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/scrollbar';
+import 'swiper/css/pagination';
 
 interface GameListProps {
     listTitle: string;
@@ -35,7 +35,7 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
 
     return (
         <>
-            <div className='hidden lg:flex lg:justify-between lg:items-center lg:p-3'>
+            <div className='flex justify-between items-center p-3'>
                 <div className={`flex gap-x-2 items-center${hasLink ? ' cursor-pointer' : ''}`}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -49,20 +49,22 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
                     )}
                     <IoChevronForwardOutline className={hasLink ? 'block' : 'hidden'} style={iconStyle} />
                 </div>
-                <div className='flex items-center justify-end gap-x-4'>
-                    <button className='swiper-button-prev bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
-                        <IoChevronForwardOutline className='rotate-180' />
-                    </button>
+                <div className='hidden lg:block'>
+                    <div className='flex items-center justify-end gap-x-4'>
+                        <button className='swiper-button-prev bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
+                            <IoChevronForwardOutline className='rotate-180' />
+                        </button>
 
-                    <button className='swiper-button-next bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
-                        <IoChevronForwardOutline />
-                    </button>
+                        <button className='swiper-button-next bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
+                            <IoChevronForwardOutline />
+                        </button>
+                    </div>
                 </div>
             </div >
             <div className='flex'>
                 <Swiper
-                    spaceBetween={20}
-                    slidesPerView={5}
+                    modules={[Navigation]}
+                    spaceBetween={25}
                     slidesPerGroup={5}
                     loop={true}
                     breakpoints={{
@@ -87,12 +89,6 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     }}
-                    scrollbar={{
-                        el: '.swiper-scrollbar',
-                        hide: false,
-                        draggable: true,
-                    }}
-                    modules={[Navigation, Scrollbar]}
                 >
                     {games.map((game: GameItemProps, index: number) => (
                         <SwiperSlide key={index}>
@@ -104,7 +100,6 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
                             />
                         </SwiperSlide>
                     ))}
-                    <div className="swiper-scrollbar"></div>
                 </Swiper>
             </div>
         </>
