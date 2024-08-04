@@ -4,11 +4,24 @@ import React, { useEffect, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoChevronForwardOutline } from "react-icons/io5";
-import { Navigation } from 'swiper/modules';
+import { Navigation, Scrollbar } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/scrollbar';
 
-const GameList = () => {
+interface GameListProps {
+    listTitle: string;
+    hasLink?: boolean;
+    link?: string;
+}
+
+const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
     const [games, setGames] = useState([]);
+    const [isHovered, setIsHovered] = useState(false);
+
+    const iconStyle = {
+        transform: isHovered ? 'translateX(5px)' : 'translateX(0)',
+        transition: 'transform 0.3s ease-in-out'
+    };
 
     useEffect(() => {
         const fetchGames = async (): Promise<void> => {
@@ -22,8 +35,21 @@ const GameList = () => {
 
     return (
         <>
-            <div className='hidden lg:block'>
-                <div className='flex items-center justify-end gap-x-4 mb-4'>
+            <div className='hidden lg:flex lg:justify-between lg:items-center lg:p-3'>
+                <div className={`flex gap-x-2 items-center${hasLink ? ' cursor-pointer' : ''}`}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    {hasLink ? (
+                        <a href={link} className='font-bold'>
+                            {listTitle}
+                        </a>
+                    ) : (
+                        <h1 className='font-bold'>{listTitle}</h1>
+                    )}
+                    <IoChevronForwardOutline className={hasLink ? 'block' : 'hidden'} style={iconStyle} />
+                </div>
+                <div className='flex items-center justify-end gap-x-4'>
                     <button className='swiper-button-prev bg-darkCharcoal p-2 rounded-full hover:brightness-125'>
                         <IoChevronForwardOutline className='rotate-180' />
                     </button>
@@ -32,7 +58,7 @@ const GameList = () => {
                         <IoChevronForwardOutline />
                     </button>
                 </div>
-            </div>
+            </div >
             <div className='flex'>
                 <Swiper
                     spaceBetween={20}
@@ -61,7 +87,12 @@ const GameList = () => {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     }}
-                    modules={[Navigation]}
+                    scrollbar={{
+                        el: '.swiper-scrollbar',
+                        hide: false,
+                        draggable: true,
+                    }}
+                    modules={[Navigation, Scrollbar]}
                 >
                     {games.map((game: GameItemProps, index: number) => (
                         <SwiperSlide key={index}>
@@ -73,6 +104,7 @@ const GameList = () => {
                             />
                         </SwiperSlide>
                     ))}
+                    <div className="swiper-scrollbar"></div>
                 </Swiper>
             </div>
         </>
