@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 export interface GameItemProps {
+    id: string;
     type: GameType;
     title: string;
     price: number;

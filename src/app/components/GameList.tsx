@@ -93,6 +93,7 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
                     {games.map((game: GameItemProps, index: number) => (
                         <SwiperSlide key={index}>
                             <GameItem
+                                id={game.id}
                                 type={game.type}
                                 title={game.title}
                                 price={game.price}
