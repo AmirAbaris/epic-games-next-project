@@ -25,10 +25,16 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
 
     useEffect(() => {
         const fetchGames = async (): Promise<void> => {
-            const response = await fetch('/data/game-items.json');
-            const data = await response.json();
-
-            setGames(data);
+            try {
+                const response = await fetch('/data/game-items.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch games');
+                }
+                const data = await response.json();
+                setGames(data);
+            } catch (error) {
+                console.error(error);
+            }
         };
         fetchGames();
     }, []);
