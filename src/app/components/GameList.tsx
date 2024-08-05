@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import GameItem, { GameItemProps } from './GameItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoChevronForwardOutline } from "react-icons/io5";
@@ -18,10 +18,10 @@ const GameList = ({ listTitle, hasLink, link }: GameListProps) => {
     const [games, setGames] = useState([]);
     const [isHovered, setIsHovered] = useState(false);
 
-    const iconStyle = {
+    const iconStyle = useMemo(() => ({
         transform: isHovered ? 'translateX(5px)' : 'translateX(0)',
         transition: 'transform 0.3s ease-in-out'
-    };
+    }), [isHovered]);
 
     useEffect(() => {
         const fetchGames = async (): Promise<void> => {
